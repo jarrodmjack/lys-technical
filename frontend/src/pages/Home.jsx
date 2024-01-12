@@ -3,7 +3,7 @@ import Comic from "../components/Comic";
 import { useLoaderData } from "react-router";
 
 export async function loader() {
-    const response = await fetch(`https://jolly-cowboy-boots-frog.cyclic.app/`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}`);
     const data = await response.json();
     return data;
 }

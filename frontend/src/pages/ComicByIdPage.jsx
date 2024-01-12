@@ -3,7 +3,7 @@ import Comic from "../components/Comic";
 
 export async function loader({ params }) {
     const response = await fetch(
-        `https://jolly-cowboy-boots-frog.cyclic.app/comic/${params.id}`
+        `${import.meta.env.VITE_API_URL}/comic/${params.id}`
     );
     const data = await response.json();
     return data;
