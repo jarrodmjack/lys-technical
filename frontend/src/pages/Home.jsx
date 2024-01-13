@@ -16,8 +16,8 @@ const Home = () => {
 
     return (
         <>
-            {/* <ComicNavigationBar comicNum={data.comic.num} /> */}
-            {/* <Comic comic={data.comic} />; */}
+            <ComicNavigationBar comicNum={data.comic.num} />
+            <Comic comic={data.comic} />;
         </>
     );
 };

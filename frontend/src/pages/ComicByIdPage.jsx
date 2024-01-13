@@ -7,23 +7,23 @@ export async function loader({ params }) {
         `${import.meta.env.VITE_API_URL}/comic/${params.id}`
     );
     const data = await response.json();
-    console.log('data: ', data)
-    // return data;
+    return data;
 }
 
 const ComicByIdPage = () => {
-    // const data = useLoaderData();
+    const data = useLoaderData();
 
-    // if (!data.comic) {
-    //     return <Link to="/">Something Broke</Link>;
-    // }
+    if (!data.comic) {
+        return <Link to="/">Something Broke</Link>;
+    }
 
-    // return (
-    //     <>
-    //         <ComicNavigationBar comicNum={data.comic.num} />
-    //         <Comic comic={data.comic} />
-    //     </>
-    // );
+    return (
+        <>  
+            <h1>{data.timesVisited} visits</h1>
+            <ComicNavigationBar comicNum={data.comic.num} />
+            <Comic comic={data.comic} />
+        </>
+    );
 };
 
 export default ComicByIdPage;

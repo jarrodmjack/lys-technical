@@ -24,7 +24,7 @@ const Comic = ({ comic }) => {
                 {comic.transcript ? (
                     transcript.map((line, i) => {
                         if (line === "") {
-                            return <></>;
+                            return <div key={i}></div>;
                         } else {
                             return <p key={i}>{line}</p>;
                         }
