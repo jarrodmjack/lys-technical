@@ -2,10 +2,13 @@ import React from "react";
 
 const Comic = ({ comic }) => {
     let pattern = /\[\[|\]\]|\{\{|\}\}/g;
-    const transcript = comic.transcript
-        .replace(pattern, "")
-        .replace("Alt-title: ", "")
-        .split("\n");
+    const transcript = comic.transcript.replace(pattern, "").split("\n");
+
+    const comicCreatedDate = new Date(
+        +comic.year,
+        +comic.month - 1,
+        +comic.day
+    );
 
     return (
         <div>
@@ -13,7 +16,22 @@ const Comic = ({ comic }) => {
                 <img src={comic.img} alt={comic.alt} />
             </div>
             <div>
-                {transcript.map((line) => <p>{line}</p>)}
+                <p className="comic-date">
+                    This comic was created on {comicCreatedDate.toDateString()}
+                </p>
+            </div>
+            <div className="transcript-box">
+                {comic.transcript ? (
+                    transcript.map((line, i) => {
+                        if (line === "") {
+                            return <></>;
+                        } else {
+                            return <p key={i}>{line}</p>;
+                        }
+                    })
+                ) : (
+                    <>No Transcript Available</>
+                )}
             </div>
         </div>
     );

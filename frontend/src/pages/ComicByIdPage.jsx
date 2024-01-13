@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Comic from "../components/Comic";
+import ComicNavigationBar from "../components/ComicNavigationBar";
 
 export async function loader({ params }) {
     const response = await fetch(
@@ -16,7 +17,12 @@ const ComicByIdPage = () => {
         return <Link to="/">Something Broke</Link>;
     }
 
-    return <Comic comic={comic} />;
+    return (
+        <>
+            <ComicNavigationBar comicNum={comic.num} />
+            <Comic comic={comic} />
+        </>
+    );
 };
 
 export default ComicByIdPage;
