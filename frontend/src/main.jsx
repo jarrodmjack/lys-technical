@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home, { loader as latestComicLoader } from "./pages/Home";
 import ComicByIdPage, { loader as comicLoader } from "./pages/ComicByIdPage";
 import App from "./App";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
                 loader: comicLoader,
             },
         ],
+        errorElement: <ErrorPage />
     },
 ]);
 
